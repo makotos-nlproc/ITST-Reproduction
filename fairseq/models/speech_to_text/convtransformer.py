@@ -354,6 +354,7 @@ class ConvTransformerEncoder(FairseqEncoder):
         if self.uni_encoder:
             seq_len, _, _ = x.size()
             attn_mask = self.block_mask[:seq_len, :seq_len].to(x.device)
+            # attn_mask = self.block_mask[:seq_len, :seq_len].to(x.device).to(torch.float16)
 
         for layer in self.transformer_layers:
             x = layer(

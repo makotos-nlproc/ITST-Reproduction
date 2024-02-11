@@ -897,7 +897,8 @@ class TransformerDecoder(FairseqIncrementalDecoder):
         padding_mask: Optional[Tensor] = None
         if encoder_out is not None:
             enc = encoder_out["encoder_out"][0]
-            padding_mask = encoder_out["encoder_padding_mask"][0]
+            if len(encoder_out["encoder_padding_mask"]) > 0:
+                padding_mask = encoder_out["encoder_padding_mask"][0]
             assert (
                 enc.size()[1] == bs
             ), f"Expected enc.shape == (t, {bs}, c) got {enc.shape}"

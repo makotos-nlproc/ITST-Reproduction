@@ -80,8 +80,11 @@ class LabelSmoothedCrossEntropyCriterion(FairseqCriterion):
         """
 
         # for speech-to-text simultaneous translation with fixed pre-decision
-        train_threshold = 0.8 + 0.2 * math.exp(-update_num / 60000)
-        if update_num < 4000:
+        if update_num is not None:
+            train_threshold = 0.8 + 0.2 * math.exp(-update_num / 60000)
+            if update_num < 4000:
+                train_threshold = None
+        else:
             train_threshold = None
         net_output = model(**sample["net_input"], train_threshold=train_threshold)
 
