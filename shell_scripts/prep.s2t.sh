@@ -1,8 +1,14 @@
-mustc_root=PATH_TO_MUSTC_DATA
+# mustc_root=PATH_TO_MUSTC_DATA
+mustc_root=~/ITST-Reproduction/data
 lang=de
 
+# mkdir en-de-eval
+eval_data~/ITST-Reproduction/data/en-de-eval
+
 # unzip
-tar -xzvf ${mustc_root}/MUSTC_v1.0_en-${lang}.tar.gz
+# tar -xzvf ${mustc_root}/MUSTC_v1.0_en-${lang}.tar.gz
+
+export PYTHONPATH="~/ITST-reproduction/examples:$PYTHONPATH"
 
 # prepare ASR data
 python examples/speech_to_text/prep_mustc_data.py \
@@ -17,7 +23,6 @@ python examples/speech_to_text/prep_mustc_data.py \
   --cmvn-type global
 
 # generate the wav list and reference file for SimulEval
-eval_data=PATH_TO_SAVE_EVAL_DATA
 for split in dev tst-COMMON tst-HE
 do
     python examples/speech_to_text/seg_mustc_data.py \
