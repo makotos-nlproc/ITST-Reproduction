@@ -6,7 +6,7 @@ EXP_NAME=$1
 mustc_root=~/ITST-Reproduction/data
 lang=de
 # mkdir checkopoints
-asr_modelfile=~/ITST-Reproduction/checkpoints/${EXP_NAME}
+asr_modelfile=~/ITST-Reproduction/asr_model/${EXP_NAME}
 mkdir -p ${asr_modelfile}
 
 python train.py ${mustc_root}/en-${lang} \
