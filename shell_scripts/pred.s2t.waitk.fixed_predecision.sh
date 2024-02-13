@@ -1,23 +1,29 @@
+export PYTHONPATH="~/ITST-reproduction/examples:$PYTHONPATH"
 export CUDA_VISIBLE_DEVICES=0
 
-mustc_root=PATH_TO_MUSTC_DATA
+mustc_root=~/ITST-Reproduction/data
 lang=de
-modelfile=PATH_TO_SAVE_MODEL
-last_file=LAST_CHECKPOINT
+modelfile=~/ITST-Reproduction/waitk_st_model/EXP-001
+last_file=${modelfile}/checkpoint_last.pt
 
-wav_list=FILE_OF_SRC_AUDIO_LIST
-reference=FILE_OF_TGT_REFERENCE
-output_dir=DIR_TO_OUTPUT
+eval_root=~/ITST-Reproduction/data/en-de-eval/tst-COMMON
+wav_list=${eval_root}/tst-COMMON.wav_list
+reference=${eval_root}/tst-COMMON.de
+output_dir=~/ITST-Reproduction/waitk_st_model_eval
 
 
 # average last 5 checkpoints
-python scripts/average_checkpoints.py --inputs ${modelfile} --num-update-checkpoints 5 --output ${modelfile}/average-model.pt --last_file ${last_file}
-file=${modelfile}/average-model.pt 
+python scripts/average_checkpoints.py --inputs ${modelfile} \
+  --num-update-checkpoints 5 \
+  --output ${output_dir}/average-model.pt \
+  --last_file ${last_file}
+
+file=${output_dir}/average-model.pt 
 
 simuleval --agent examples/speech_to_text/simultaneous_translation/agents/fairseq_simul_st_agent.py \
     --source ${wav_list} \
     --target ${reference} \
-    --data-bin ${MUSTC_ROOT}/en-${LANG} \
+    --data-bin ${mustc_root}/en-${lang} \
     --config config_st.yaml \
     --model-path ${file} \
     --output ${output_dir} \
