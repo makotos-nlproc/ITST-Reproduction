@@ -4,5 +4,5 @@
 *.cpp
 version.py
 
-/checkpoints
+/models
 /wandb
