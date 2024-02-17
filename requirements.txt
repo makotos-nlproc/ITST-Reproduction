@@ -53,7 +53,9 @@ regex==2021.11.10
 requests==2.26.0
 sacrebleu==1.5.1
 sentencepiece==0.1.96
--e git+https://github.com/facebookresearch/SimulEval.git@2db1a590af11c28f6a3f67779568c4589b922cf1#egg=simuleval
+# -e git+https://github.com/facebookresearch/SimulEval.git@2db1a590af11c28f6a3f67779568c4589b922cf1#egg=simuleval
+# https://github.com/facebookresearch/SimulEval/tree/2db1a590af11c28f6a3f67779568c4589b922cf1
+# SimulEvalが相当古く実装の中身がほとんどないように思われる
 # six @ file:///tmp/build/80754af9/six_1623709665295/work
 six
 SoundFile==0.10.3.post1
