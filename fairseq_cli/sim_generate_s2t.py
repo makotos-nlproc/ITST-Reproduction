@@ -42,6 +42,7 @@ def main(cfg: DictConfig):
     ), "--replace-unk requires a raw text dataset (--dataset-impl=raw)"
 
     if cfg.common_eval.results_path is not None:
+        # results_pathを指定すればファイル出力できそう
         os.makedirs(cfg.common_eval.results_path, exist_ok=True)
         output_path = os.path.join(
             cfg.common_eval.results_path,

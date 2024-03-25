@@ -184,7 +184,7 @@ class MultiheadAttention(nn.Module):
                 self.training or self.dropout_module.apply_during_inference,
                 key_padding_mask,
                 need_weights,
-                attn_mask.to(torch.float16),
+                attn_mask,
                 use_separate_proj_weight=True,
                 q_proj_weight=self.q_proj.weight,
                 k_proj_weight=self.k_proj.weight,

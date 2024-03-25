@@ -5,7 +5,7 @@ EXP_NAME=$1
 
 mustc_root=~/ITST-Reproduction/data
 lang=de
-modelfile=~/ITST-Reproduction/asr_model/${EXP_NAME}
+modelfile=~/ITST-Reproduction/models/asr_model/${EXP_NAME}
 last_file=${modelfile}/checkpoint_last.pt
 
 # average last 5 checkpoints

@@ -6,9 +6,9 @@ EXP_NAME=$1
 
 mustc_root=~/ITST-Reproduction/data
 lang=de
-asr_modelfile=~/ITST-Reproduction/asr_model/${EXP_NAME}
+asr_modelfile=~/ITST-Reproduction/models/asr_model/EXP-003
 # mkdir st_model
-st_modelfile=~/ITST-Reproduction/st_model/${EXP_NAME}
+st_modelfile=~/ITST-Reproduction/models/st_model/DEBUG
 mkdir -p ${st_modelfile}
 pretrain_model=checkpoint_best.pt
 
@@ -32,4 +32,4 @@ python train.py ${mustc_root}/en-${lang} \
     --find-unused-parameters \
     --fp16 \
     --log-interval 10 \
-    --wandb-project itst-st-train-${EXP_NAME}
+    # --wandb-project itst-st-train-${EXP_NAME}

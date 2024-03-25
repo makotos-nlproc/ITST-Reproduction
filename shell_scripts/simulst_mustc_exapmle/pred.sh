@@ -9,16 +9,9 @@ last_file=${modelfile}/checkpoint_last.pt
 eval_root=~/ITST-Reproduction/data/en-de-eval/tst-COMMON
 wav_list=${eval_root}/tst-COMMON.wav_list
 reference=${eval_root}/tst-COMMON.de
-output_dir=~/ITST-Reproduction/waitk_st_model_eval
 
-
-# average last 5 checkpoints
-python scripts/average_checkpoints.py --inputs ${modelfile} \
-  --num-update-checkpoints 5 \
-  --output ${output_dir}/average-model.pt \
-  --last_file ${last_file}
-  
-file=${output_dir}/average-model.pt 
+output_dir=~/ITST-Reproduction/models/simulst_mustc_example
+file=${output_dir}/mustc_multilingual_st_transformer_m.pt
 
 simuleval --agent examples/speech_to_text/simultaneous_translation/agents/fairseq_simul_st_agent.py \
     --source ${wav_list} \
